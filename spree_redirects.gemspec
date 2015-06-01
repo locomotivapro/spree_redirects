@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "spree_redirects"
   s.version     = SpreeRedirects::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Spencer Steffen"]
-  s.email       = ["spencer@citrusme.com"]
+  s.authors     = ["Spencer Steffen", "Denis Tierno"]
+  s.email       = ["spencer@citrusme.com", "contato@locomotiva.pro"]
   s.homepage    = "https://github.com/citrus/spree_redirects"
   s.summary     = %q{Spree Redirects adds an interface for redirecting old url's to new ones.}
   s.description = %q{Spree Redirects adds an interface for redirecting old url's to new ones.}
@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency('spree_core', '~> 1.2.4')
-  
+  s.add_runtime_dependency('spree_core', '~> 3.1.0.beta')
+
   s.add_development_dependency('dummier',      '~> 0.3.2')
   s.add_development_dependency('shoulda',      '~> 3.0.0')
   s.add_development_dependency('factory_girl', '~> 2.6.0')

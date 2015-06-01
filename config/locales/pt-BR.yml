@@ -1,0 +1,10 @@
+pt-BR:
+  spree:
+    old_url: URL Antiga
+    new_url: URL Nova
+    new_redirect: Novo redirecionamento
+    edit_redirect: Editando redirecionamento
+    redirect: Redirecionamento
+    redirects: Gerenciar redirecionamentos
+    explain_redirects: Cria regras de redirecionamento para urls não existentes
+    duplicate_url_error: A url antiga não pode ser igual a url nova

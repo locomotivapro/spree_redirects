@@ -1,11 +1,14 @@
-<%= form.field_container :old_url do %>
-  <%= form.label :old_url, t('old_url') %><br />
-  <%= form.text_field :old_url, :class => 'text' %>
-  <%= error_message_on :redirect, :old_url %>
-<% end %>
-
-<%= form.field_container :new_url do %>
-  <%= form.label :new_url, t('new_url') %><br />
-  <%= form.text_field :new_url, :class => 'text' %>
-  <%= error_message_on :redirect, :new_url %>
-<% end %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form.field_container :old_url, class: ['form-group'] do %>
+      <%= form.label :old_url, Spree.t('old_url') %>
+      <%= form.text_field :old_url, :class => 'form-control' %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= form.field_container :new_url, class: ['form-group'] do %>
+      <%= form.label :new_url, Spree.t('new_url') %>
+      <%= form.text_field :new_url, :class => 'form-control' %>
+    <% end %>
+  </div>
+</div>

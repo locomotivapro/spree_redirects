@@ -1,47 +1,57 @@
-<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+<%= content_for :page_title do %>
+  <%= Spree.t(:redirects) %>
+<% end %>
 
-<h1>Listing Redirects</h1>
+<%= content_for :table_filter do %>
+  <div data-hook="admin_redirects_filter">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :old_url_cont, Spree.t(:old_url) %>
+            <%= f.text_field :old_url_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :new_url_cont, Spree.t(:new_url) %>
+            <%= f.text_field :new_url_cont, class: 'form-control' %>
+          </div>
+        </div>
+        <div class=" col-md-12 form-actions">
+          <%= button Spree.t(:search), 'search' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
-<table class="index">
+<%= content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_redirect), new_admin_redirect_path, class: 'btn-success', icon: 'add' %>
+ <% end %>
+
+<%= paginate @redirects %>
+
+<table class="table">
   <thead>
 	<tr>
-    	<th><%= sort_link @search, :old_url,  t('redirect.old_url') %></th>
-    	<th><%= sort_link @search, :new_url, t('redirect.new_url') %></th>
-    	<th><%= t('action') %></th>
+    	<th><%= sort_link @search, :old_rl,  Spree.t('old_url') %></th>
+    	<th><%= sort_link @search, :new_url, Spree.t('new_url') %></th>
+    	<th><%= Spree.t('action') %></th>
 	</tr>
   </thead>
   <tbody>
-    <%- @collection.each do |redirect|%>
+    <%- @redirects.each do |redirect|%>
     <tr id="<%= dom_id redirect %>">
       <td><%= redirect.old_url %></td>
       <td><%= redirect.new_url %></td>
       <td>
-      	<%= link_to_edit redirect %> &nbsp;
-      	<%= link_to_delete redirect %>
+      	<%= link_to_edit redirect, no_text: true %> &nbsp;
+      	<%= link_to_delete redirect, no_text: true %>
       </td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= paginate @collection %>
-
-<div id="new_redirect_form"></div>
-<br/>
-<p>
-  <%= link_to icon('add') + ' ' + t(".new_redirect"), new_admin_redirect_url, :id => "new_redirect_link" %>
-</p>
-
-<% content_for :head do %>
-  <script type="text/javascript">
-    jQuery(document).ready(function(){  
-      
-      jQuery('#new_redirect_link').click(function(event) { 
-        event.preventDefault();
-        jQuery(this).hide();
-        jQuery.ajax({type: 'GET', url: this.href, data: ({authenticity_token: AUTH_TOKEN}), success: function(r){ jQuery('#new_redirect_form').html(r);} });
-      });
-      
-    });
-  </script>
-<% end %>
+<%= paginate @redirects %>
